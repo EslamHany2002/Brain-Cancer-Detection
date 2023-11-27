@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #Read in image
-img= cv2.imread("Datasets\yes\Y20.jpg")
+img= cv2.imread("Datasets\yes\Y6.jpg")
 # print("width: {} pixels".format(img.shape[1]))
 # print("height: {} pixels".format(img.shape[0]))
 # print("channels: {}".format(img.shape[2]))
@@ -41,10 +41,12 @@ brain_out = img.copy()
 brain_out[brain_mask==False] = (0,0,0)
 cv2.imshow('Connected Components',brain_out)
 
-(T, thresh) = cv2.threshold(brain_out, 155, 255, cv2.THRESH_BINARY)
+averaging = cv2.blur(brain_out,(11,11))
+
+(T, thresh) = cv2.threshold(averaging, 155, 255, cv2.THRESH_BINARY)
 cv2.imshow("thresh",thresh)
 
-(T, threshInv) = cv2.threshold(brain_out, 155, 255,cv2.THRESH_BINARY_INV)
+(T, threshInv) = cv2.threshold(averaging, 155, 255,cv2.THRESH_BINARY_INV)
 cv2.imshow("threshInv",threshInv)
 
 cv2.waitKey(0)
