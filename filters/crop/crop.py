@@ -32,7 +32,3 @@ extBot = tuple(c[c[:, :, 1].argmax()][0])
 new_image = image[extTop[1]:extBot[1], extLeft[0]:extRight[0]]            
 
 cv2.imwrite("crop.jpg",new_image)
-
-
-
-
