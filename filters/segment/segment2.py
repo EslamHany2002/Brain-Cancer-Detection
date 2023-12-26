@@ -23,7 +23,7 @@ def segment_image(image):
     return filtered_image
 
 # file path to the image
-image_file_path = "m (7).jpg"
+image_file_path = "Datasets\yes\Y1.jpg"
 
 # read the image
 image = read_image(image_file_path)

@@ -18,7 +18,7 @@ def segment_image(image):
 
 # Example usage:
 
-input_image = cv2.imread("Tr-me_0080.jpg")
+input_image = cv2.imread("Datasets\yes\Y1.jpg")
 
 # Segment the image.
 segmented_image = segment_image(input_image)
