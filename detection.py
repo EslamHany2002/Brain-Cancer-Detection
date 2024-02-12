@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #Read in image
-img= cv2.imread("Datasets\Dataset 2\Testing\glioma\Te-gl_0011.jpg")
+img= cv2.imread("Datasets/Dataset 1/yes/Y1.jpg")
 # print("width: {} pixels".format(img.shape[1]))
 # print("height: {} pixels".format(img.shape[0]))
 # print("channels: {}".format(img.shape[2]))
@@ -14,9 +14,9 @@ gray= cv2.cvtColor(img,cv2.COLOR_BGR2GRAY, 0.7)
 
 # cv2.imshow("Brain with Skull",gray)
 
-# Make a histogram of the intensities in the grayscale image
-plt.hist(gray.ravel(),256)
-plt.show()
+#Make a histogram of the intensities in the grayscale image
+# plt.hist(gray.ravel(),256)
+# plt.show()
 
 
 #Threshold the image to binary using Otsu's method
@@ -40,17 +40,17 @@ brain_out = img.copy()
 #In a copy of the original image, clear those pixels that don't correspond to the brain
 brain_out[brain_mask==False] = (0,0,0)
 cv2.imshow('Connected Components',brain_out)
-cv2.imwrite('Connected Components1.jpg',brain_out)
+cv2.imwrite("brain_ou.jpg",brain_out)
 
 averaging = cv2.blur(brain_out,(11,11))
 
 (T, thresh) = cv2.threshold(averaging, 155, 255, cv2.THRESH_BINARY)
 cv2.imshow("thresh",thresh)
-cv2.imwrite("thresh2.jpg",thresh)
-
+cv2.imwrite("imagw3.jpg",thresh)
 
 (T, threshInv) = cv2.threshold(averaging, 155, 255,cv2.THRESH_BINARY_INV)
 cv2.imshow("threshInv",threshInv)
+cv2.imwrite("imagw4.jpg",threshInv)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
